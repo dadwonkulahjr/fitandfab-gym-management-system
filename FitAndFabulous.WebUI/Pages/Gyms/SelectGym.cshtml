@@ -1,0 +1,61 @@
+﻿@page
+@model FitAndFabulous.WebUI.Pages.Gyms.SelectGymModel
+@{
+
+}
+<style>
+    .customImage {
+        overflow: hidden;
+    }
+
+        .customImage img {
+            transition: all 1.5s ease;
+        }
+
+        .customImage:hover img {
+            transform: scale(1.5);
+        }
+</style>
+
+@*@if (User.Identity.IsAuthenticated)
+{*@
+    <div class="border backgroundWhite container shadow mb-5">
+        <div class="row">
+            <div class="col-sm-12">
+                <h5 class="text-success">
+                    <i class="fas fa-dumbbell"></i>&nbsp;SELECT GYM
+                </h5>
+
+            </div>
+        </div>
+        <hr />
+        <div class="container">
+            <div class="row">
+                @if (Model.Gyms.Any())
+                {
+                    @for (int i = 0; i < Model.Gyms.Count(); i++)
+                    {
+                        string phonePath = "~/images/" + (Model.Gyms[i].Image ?? "no-image.png");
+                        <div class="card mb-2 shadow" style="min-width: 18rem; max-width: 30.5%;margin:5px;">
+                            <div class="customImage">
+                                <img src="@phonePath" class="card-img-top rounded-circle" asp-append-version="true" />
+                            </div>
+                            <div class="card-body text-center">
+                                <h2 class="text-success">@Model.Gyms[i].Name</h2>
+                                <p class="card-text">@Model.Gyms[i].Description</p>
+                                <a asp-page="dashboard" asp-route-id="@Model.Gyms[i].Id" class="btn btn-outline-success form-control">
+                                    <i class="far fa-check-circle"></i>&nbsp;Select gym
+                                </a>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <text>No gym has been added yet.</text>
+                }
+            </div>
+        </div>
+    </div>
+
+@*}*@

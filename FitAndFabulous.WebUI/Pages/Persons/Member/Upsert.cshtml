@@ -1,0 +1,204 @@
+﻿@page
+@model FitAndFabulous.WebUI.Pages.Persons.Member.UpsertModel
+@{
+    if (Model.MemberViewModel.Person.Id == 0)
+    {
+        ViewData["Title"] = "Create new member";
+    }
+    else
+    {
+        ViewData["Title"] = "Update member";
+    }
+}
+
+
+<div class="border backgroundWhite container shadow mb-5">
+    <div class="row">
+        <div class="col-10">
+            @if (Model.MemberViewModel.Person.Id == 0)
+            {
+                <h5 class="text-success">
+                    <i class="fas fa-user-plus"></i>&nbsp;Create new member
+                </h5>
+            }
+            else
+            {
+                <h5 class="text-success">
+                    <i class="far fa-edit"></i>&nbsp;Update member
+                </h5>
+            }
+        </div>
+    </div>
+    <hr />
+    <form method="post">
+        <div class="text-danger" asp-validation-summary="All"></div>
+        @if (Model.MemberViewModel.Person.Id != 0)
+        {
+            <input hidden="hidden" asp-for="MemberViewModel.Person.Id" />
+        }
+
+        @if (Model.MemberViewModel.Person.Member.Id != 0)
+        {
+            <input hidden="hidden" asp-for="MemberViewModel.Person.Member.Id" />
+        }
+        <div class="border shadow" style="padding:30px;">
+            @if (Model.MemberViewModel.Person.Id != 0)
+            {
+                <div class="row">
+                    <div class="col-3">
+                        <label asp-for="MemberViewModel.Person.FullName" class="col-form-label"></label>
+                    </div>
+                    <div class="col-9">
+                        <input asp-for="MemberViewModel.Person.FullName" class="form-control" placeholder="Fullname..." disabled="disabled" />
+                    </div>
+                </div>
+            }
+            <div class="row mt-1">
+                <div class="col-3">
+                    <label asp-for="MemberViewModel.Person.FirstName" class="col-form-label"></label>
+                </div>
+                <div class="col-9">
+                    <input asp-for="MemberViewModel.Person.FirstName" class="form-control" placeholder="First name..." />
+                    <span asp-validation-for="MemberViewModel.Person.FirstName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <div class="col-3">
+                    <label asp-for="MemberViewModel.Person.MiddleName" class="col-form-label"></label>
+                </div>
+                <div class="col-9">
+                    <input asp-for="MemberViewModel.Person.MiddleName" class="form-control" placeholder="Middle name..." />
+                    <span asp-validation-for="MemberViewModel.Person.MiddleName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <label asp-for="MemberViewModel.Person.LastName" class="col-form-label"></label>
+                </div>
+                <div class="col-9">
+                    <input asp-for="MemberViewModel.Person.LastName" class="form-control mt-2" placeholder="Last name..." />
+                    <span asp-validation-for="MemberViewModel.Person.LastName" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-3">
+                    <label asp-for="MemberViewModel.Person.Email" class="col-form-label"></label>
+                </div>
+                <div class="col-9">
+                    <input asp-for="MemberViewModel.Person.Email" class="form-control mt-2" placeholder="Email..." />
+                    <span asp-validation-for="MemberViewModel.Person.Email" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-3">
+                    <label asp-for="MemberViewModel.Person.Dob" class="col-form-label"></label>
+                </div>
+                <div class="col-9">
+                    <input asp-for="MemberViewModel.Person.Dob" type="date" class="form-control mt-2" />
+                    <span asp-validation-for="MemberViewModel.Person.Dob" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-3">
+                    <label asp-for="MemberViewModel.Person.Address" class="col-form-label"></label>
+                </div>
+                <div class="col-9">
+                    <input asp-for="MemberViewModel.Person.Address" class="form-control mt-2" placeholder="Address..." />
+                    <span asp-validation-for="MemberViewModel.Person.Address" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-3">
+                    <label asp-for="MemberViewModel.Person.Member.GymId" class="col-form-label"></label>
+                </div>
+                <div class="col-9 mt-1">
+                    @Html.DropDownListFor(x => x.MemberViewModel.Person.Member.GymId,
+                   Model.MemberViewModel.GetDropdownListForGym, "Select gym", new { @class = "form-select" })
+                    <span asp-validation-for="MemberViewModel.Person.Member.GymId" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-3">
+                    <label asp-for="MemberViewModel.Person.GenderId" class="col-form-label"></label>
+                </div>
+                <div class="col-9 mt-1">
+                    @Html.DropDownListFor(x => x.MemberViewModel.Person.GenderId,
+                   Model.MemberViewModel.GetDropdownListForGender, "Select gender", new { @class = "form-select" })
+                    <span asp-validation-for="MemberViewModel.Person.GenderId" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-3">
+                    <label asp-for="MemberViewModel.Person.SuffixId" class="col-form-label"></label>
+                </div>
+                <div class="col-9 mt-1">
+                    @Html.DropDownListFor(x => x.MemberViewModel.Person.SuffixId,
+                   Model.MemberViewModel.GetDropdownListForSuffix, "Select suffix", new { @class = "form-select" })
+                    <span asp-validation-for="MemberViewModel.Person.SuffixId" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-3">
+                    <label asp-for="MemberViewModel.Person.PositionId" class="col-form-label"></label>
+                </div>
+                <div class="col-9 mt-1">
+                    @Html.DropDownListFor(x => x.MemberViewModel.Person.PositionId,
+                   Model.MemberViewModel.GetDropdownListForPosition, "Select type", new { @class = "form-select" })
+                    <span asp-validation-for="MemberViewModel.Person.PositionId" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-3">
+                    <label asp-for="MemberViewModel.Person.Contact" class="col-form-label"></label>
+                </div>
+                <div class="col-9">
+                    <input asp-for="MemberViewModel.Person.Contact" class="form-control mt-2" placeholder="Contact..." />
+                    <span asp-validation-for="MemberViewModel.Person.Contact" class="text-danger"></span>
+                </div>
+            </div>
+            @if (Model.MemberViewModel.Person.Id == 0)
+            {
+                <div class="row mt-4 offset-3">
+                    <div class="col-sm-6 mt-3">
+                        <button class="btn btn-success form-control">
+                            <i class="fas fa-plus"></i>&nbsp;Create
+                        </button>
+                    </div>
+                    <div class="col-sm-6 mt-3">
+                        <a class="btn btn-secondary form-control" style="height:auto;" asp-page="list">
+                            <i class="fas fa-list"></i>&nbsp;Back to List
+                        </a>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="row mt-4 offset-3">
+                    <div class="col-sm-6 mt-3">
+                        <button class="btn btn-success form-control">
+                            <i class="fas fa-pencil-alt"></i>&nbsp;Update
+                        </button>
+                    </div>
+                    <div class="col-sm-6 mt-3">
+                        <a class="btn btn-secondary form-control" style="height:auto;" asp-page="list">
+                            <i class="fas fa-list"></i>&nbsp;Back to List
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </form>
+</div>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

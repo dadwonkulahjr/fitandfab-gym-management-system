@@ -1,0 +1,58 @@
+﻿@page
+@model FitAndFabulous.WebUI.Pages.Memberships.ListModel
+@{
+    ViewData["Title"] = "Membership List";
+}
+
+<div class="border backgroundWhite container shadow mb-5">
+    <div class="row">
+        <div class="col-9">
+            <h5 class="text-success">
+                <i class="fas fa-list-alt"></i>&nbsp;Membership List
+            </h5>
+
+        </div>
+        <div class="col-3">
+            <a class="btn btn-outline-success form-control" asp-page="upsert">
+                <i class="fa fa-plus-square"></i>&nbsp;Add
+            </a>
+        </div>
+    </div>
+    <hr />
+    <div class="col-sm-12 border mt-1 p-4 table-responsive">
+        @*<div class="table-responsive">*@
+        <table class="table border table-hover table-striped" id="memberships" style="width:100%;">
+            <thead class="table-secondary">
+                <tr>
+                    <th>Fullname</th>
+                    <th>Gender</th>
+                    <th>Suffix</th>
+                    <th>Dob</th>
+                    <th>Package</th>
+                    <th>Date</th>
+                    <th>Access Time</th>
+                    <th>Created</th>
+                    <th>Expiry</th>
+                    <th>Amount</th>
+                    <th>Type</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+        </table>
+        @*</div>*@
+
+
+
+
+
+
+
+
+    </div>
+</div>
+
+@section Scripts{
+
+    <script src="~/js/memberships.js"></script>
+}

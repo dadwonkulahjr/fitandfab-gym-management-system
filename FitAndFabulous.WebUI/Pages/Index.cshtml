@@ -1,0 +1,12 @@
+﻿@page
+@model IndexModel
+@{
+    if (User.Identity.IsAuthenticated)
+    {
+        ViewData["Title"] = "";
+    }
+    else
+    {
+        ViewData["Title"] = "Login";
+    }
+}

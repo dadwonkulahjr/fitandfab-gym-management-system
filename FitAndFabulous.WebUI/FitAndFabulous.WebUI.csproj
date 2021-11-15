@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+		<UserSecretsId>8f2714dd-f8ec-46f6-9c26-b7fafef4cc96</UserSecretsId>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="Controllers\EmployeesController.cs~RFdf4fc9.TMP" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.10" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.10" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.10" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.10" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="5.0.10" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.10" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.10" />
+		<PackageReference Include="NSwag.AspNetCore" Version="13.13.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\FitAndFabulous.DataAccess\FitAndFabulous.DataAccess.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Pages\Persons\Manager\" />
+	  <Folder Include="Pages\Persons\CEO\" />
+	  <Folder Include="Pages\Persons\Agent\" />
+	  <Folder Include="Pages\Persons\User\" />
+	  <Folder Include="wwwroot\images\iamtuse_uploads\" />
+	</ItemGroup>
+
+</Project>
